@@ -40,9 +40,7 @@ export default function LoginPage() {
         >
           Log In
         </button>
-        <p className="text-xs text-gray-500 mt-4 text-center">
-          Demo: <span className="font-mono">user@ecoeats.com</span> / <span className="font-mono">demo123</span>
-        </p>
+        
       </form>
     </main>
   );

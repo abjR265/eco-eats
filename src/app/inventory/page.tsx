@@ -41,52 +41,52 @@ export default function InventoryPage() {
 
       {/* Search and Add Item */}
       <div className="flex flex-col gap-4 mb-8">
-  {/* First line: Search */}
-  <input
-    type="text"
-    placeholder="Search foods..."
-    value={searchQuery}
-    onChange={(e) => setSearchQuery(e.target.value)}
-    className="border px-4 py-2 rounded text-black placeholder:text-gray-400 w-full"
-  />
+        {/* First line: Search */}
+        <input
+          type="text"
+          placeholder="Search foods..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className="border px-4 py-2 rounded text-black placeholder:text-gray-400 w-full"
+        />
 
-  {/* Second line: Add Item Form */}
-  <div className="flex flex-wrap gap-4">
-    <input
-      type="text"
-      placeholder="Name"
-      value={newItem.name}
-      onChange={(e) => setNewItem({ ...newItem, name: e.target.value })}
-      className="border px-4 py-2 rounded text-black placeholder:text-gray-400 flex-1"
-    />
-    <input
-      type="text"
-      placeholder="Category"
-      value={newItem.category}
-      onChange={(e) => setNewItem({ ...newItem, category: e.target.value })}
-      className="border px-4 py-2 rounded text-black placeholder:text-gray-400 flex-1"
-    />
-    <input
-      type="text"
-      placeholder="Quantity"
-      value={newItem.quantity}
-      onChange={(e) => setNewItem({ ...newItem, quantity: e.target.value })}
-      className="border px-4 py-2 rounded text-black placeholder:text-gray-400 flex-1"
-    />
-    <input
-      type="date"
-      value={newItem.expiryDate}
-      onChange={(e) => setNewItem({ ...newItem, expiryDate: e.target.value })}
-      className="border px-4 py-2 rounded text-black placeholder:text-gray-400 flex-1"
-    />
-    <button
-      onClick={handleAddItem}
-      className="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded"
-    >
-      Add Item
-    </button>
-  </div>
-</div>
+        {/* Second line: Add Item Form */}
+        <div className="flex flex-wrap gap-4">
+          <input
+            type="text"
+            placeholder="Name"
+            value={newItem.name}
+            onChange={(e) => setNewItem({ ...newItem, name: e.target.value })}
+            className="border px-4 py-2 rounded text-black placeholder:text-gray-400 flex-1"
+          />
+          <input
+            type="text"
+            placeholder="Category"
+            value={newItem.category}
+            onChange={(e) => setNewItem({ ...newItem, category: e.target.value })}
+            className="border px-4 py-2 rounded text-black placeholder:text-gray-400 flex-1"
+          />
+          <input
+            type="text"
+            placeholder="Quantity"
+            value={newItem.quantity}
+            onChange={(e) => setNewItem({ ...newItem, quantity: e.target.value })}
+            className="border px-4 py-2 rounded text-black placeholder:text-gray-400 flex-1"
+          />
+          <input
+            type="date"
+            value={newItem.expiryDate}
+            onChange={(e) => setNewItem({ ...newItem, expiryDate: e.target.value })}
+            className="border px-4 py-2 rounded text-black placeholder:text-gray-400 flex-1"
+          />
+          <button
+            onClick={handleAddItem}
+            className="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded"
+          >
+            Add Item
+          </button>
+        </div>
+      </div>
 
       {/* Inventory Table */}
       <div className="overflow-x-auto">
@@ -101,29 +101,28 @@ export default function InventoryPage() {
             </tr>
           </thead>
           <tbody>
-  {filteredInventory.map((item, idx) => {
-    const daysLeft = getDaysLeft(item.expiryDate);
-    let statusColor = "bg-green-100 text-green-800";
-    if (daysLeft <= 0) statusColor = "bg-red-100 text-red-800";
-    else if (daysLeft <= 3) statusColor = "bg-red-100 text-red-800";
-    else if (daysLeft <= 5) statusColor = "bg-yellow-100 text-yellow-800";
+            {filteredInventory.map((item, idx) => {
+              const daysLeft = getDaysLeft(item.expiryDate);
+              let statusColor = "bg-green-100 text-green-800";
+              if (daysLeft <= 0) statusColor = "bg-red-100 text-red-800";
+              else if (daysLeft <= 3) statusColor = "bg-red-100 text-red-800";
+              else if (daysLeft <= 5) statusColor = "bg-yellow-100 text-yellow-800";
 
-    return (
-      <tr key={idx} className="border-b">
-        <td className="py-3 px-6 text-black">{item.name}</td>         {/* 👈 */}
-        <td className="py-3 px-6 text-black">{item.category}</td>     {/* 👈 */}
-        <td className="py-3 px-6 text-black">{item.quantity}</td>     {/* 👈 */}
-        <td className="py-3 px-6 text-black">{item.expiryDate}</td>   {/* 👈 */}
-        <td className="py-3 px-6">
-          <span className={`px-2 py-1 rounded-full text-xs font-semibold ${statusColor}`}>
-            {daysLeft > 0 ? `${daysLeft} days left` : "Expired"}
-          </span>
-        </td>
-      </tr>
-    );
-  })}
-</tbody>
-
+              return (
+                <tr key={idx} className="border-b">
+                  <td className="py-3 px-6 text-black">{item.name}</td>
+                  <td className="py-3 px-6 text-black">{item.category}</td>
+                  <td className="py-3 px-6 text-black">{item.quantity}</td>
+                  <td className="py-3 px-6 text-black">{item.expiryDate}</td>
+                  <td className="py-3 px-6">
+                    <span className={`px-2 py-1 rounded-full text-xs font-semibold ${statusColor}`}>
+                      {daysLeft > 0 ? `${daysLeft} days left` : "Expired"}
+                    </span>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
         </table>
       </div>
     </div>

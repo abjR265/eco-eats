@@ -15,8 +15,8 @@ export default function Navbar() {
       <div className="space-x-4 flex items-center text-sm">
         <Link href="/" className="text-green-700 hover:underline">Dashboard</Link>
         <Link href="/inventory" className="text-green-700 hover:underline">Inventory</Link>
-        <Link href="/wastelog" className="text-green-700 hover:underline">Waste Log</Link>
-        <Link href="/ecotips" className="text-green-700 hover:underline">Eco Tips</Link>
+        <Link href="/waste-log" className="text-green-700 hover:underline">Waste Log</Link>
+        <Link href="/eco-tips" className="text-green-700 hover:underline">Eco Tips</Link>
 
         {!isLoading && session?.user ? (
           <>

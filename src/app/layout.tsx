@@ -1,9 +1,10 @@
+import "./globals.css";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
 import Navbar from './components/Navbar';
 import SessionWrapper from "./components/SessionWrapper"; 
-import { InventoryProvider } from "./context/InventoryContext"; // ✅ import
+import { InventoryProvider } from "./context/InventoryContext"; 
+import { WasteProvider } from "./context/WasteContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,11 +29,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-green-50 text-green-900`}>
-        <InventoryProvider> {/* ✅ Wrap InventoryProvider here */}
-          <SessionWrapper> {/* ✅ Session wrapper inside */}
-            <Navbar />
-            {children}
-          </SessionWrapper>
+        <InventoryProvider>
+          <WasteProvider>
+            <SessionWrapper>
+              <Navbar />
+              {children}
+            </SessionWrapper>
+          </WasteProvider>
         </InventoryProvider>
       </body>
     </html>
