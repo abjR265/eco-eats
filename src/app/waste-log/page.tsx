@@ -16,7 +16,7 @@ export default function Page() {
     food: "", category: "Vegetables", amount: "", reason: "", date: "", cost: ""
   });
 
-  let filteredData = selectedCategory === "All"
+  const filteredData = selectedCategory === "All"
     ? [...wasteData]
     : wasteData.filter(item => item.category === selectedCategory);
 
