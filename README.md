@@ -1,6 +1,6 @@
 # EcoEats
 
-EcoEats is a full-stack web application that helps users track food waste, manage inventory, and adopt more sustainable eating habits through data insights and actionable eco tips.
+EcoEats is a full-stack web application that helps users track food waste, manage inventory, and adopt more sustainable eating habits through data insights and actionable eco tips by calling news API.
 
 ## Features
 
@@ -8,7 +8,7 @@ EcoEats is a full-stack web application that helps users track food waste, manag
 - Dashboard with real-time food waste visualizations
 - Inventory management (add, edit, delete items)
 - Waste logging with category-level insights
-- Daily eco tips and food sustainability news feed
+- Daily eco tips and food sustainability hourly NEWS feed
 - PostgreSQL database hosted on Neon
 - Frontend and backend fully deployed on Vercel
 
