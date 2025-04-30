@@ -1,8 +1,13 @@
 "use client";
 
-// components/EcoTipsPage.tsx
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+
+// ✅ Define article type for TypeScript
+type NewsArticle = {
+  url: string;
+  title: string;
+};
 
 const tips = [
   'Store apples in the refrigerator to keep them fresh for up to 6 weeks',
@@ -36,7 +41,8 @@ const sections = [
 ];
 
 export default function EcoTipsPage() {
-  const [news, setNews] = useState([]);
+  // ✅ Add NewsArticle type to news state
+  const [news, setNews] = useState<NewsArticle[]>([]);
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   useEffect(() => {
@@ -100,7 +106,12 @@ export default function EcoTipsPage() {
           <ul className="list-disc pl-5 space-y-1">
             {news.slice(0, 5).map((article, i) => (
               <li key={i}>
-                <a href={article.url} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                <a
+                  href={article.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:underline"
+                >
                   {article.title}
                 </a>
               </li>
@@ -113,5 +124,3 @@ export default function EcoTipsPage() {
     </div>
   );
 }
-  
-
